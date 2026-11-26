@@ -1,0 +1,347 @@
+/*
+ * antigravity-codex-theme · User Custom CSS Overrides (Hot-Reloaded)
+ *
+ * Add your custom rules below. Changes are automatically picked up by the
+ * daemon within ~2.5s without restarting Antigravity.
+ *
+ * Useful selectors / tokens:
+ *   html[data-ag-preset="codex-pure-white"]   (Light Codex pure-white mode)
+ *   html[data-ag-theme-mode="dark"]           (Codex Charcoal Dark mode)
+ *   #ag-live-metrics-pill                     (Centered status & telemetry bar)
+ *   #ag-live-metrics-tooltip                  (Bento detail card)
+ */
+
+/* === AG-USER-MARKDOWN-BOLD-START === */
+/* ==========================================================================
+ * 完整极客版（纯黑高对比 + 极客暗蓝用户气泡 + 2:1 ASCII 架构图增强）
+ * ========================================================================== */
+
+/* 1. 深色模式全窗纯黑 OLED 画布 */
+:is(html[data-ag-theme-mode="dark"], html[data-ag-theme-mode="dark"] body, html:has(> body.dark), body.dark, body.theme-dark, body[data-agy-theme].dark) {
+  --background: #000000 !important;
+  --content: #000000 !important;
+  --foreground: #EDEDED !important;
+  --secondary-foreground: #DCDCDC !important;
+  --muted-foreground: #9A9AA2 !important;
+  --shell: #000000 !important;
+  --sidebar: #000000 !important;
+  --vscode-sideBar-background: #000000 !important;
+  --sidebar-secondary: #141417 !important;
+  --sidebar-muted: rgba(255, 255, 255, 0.05) !important;
+  --sidebar-border: rgba(255, 255, 255, 0.07) !important;
+  --card: #09090B !important;
+  --card-border: rgba(255, 255, 255, 0.08) !important;
+  --card-edge: rgba(255, 255, 255, 0.07) !important;
+  --border: rgba(255, 255, 255, 0.08) !important;
+  --sash-line: rgba(255, 255, 255, 0.08) !important;
+  --glass: #0A0A0C !important;
+  --onyx-well: #000000 !important;
+  --onyx-frame: #000000 !important;
+  --onyx-raised: #101013 !important;
+  --onyx-selected: #16161A !important;
+  --ag-composer-tray-bg: #000000;
+  --ag-composer-card-bg: #0B0B0E;
+  --ag-composer-card-border: rgba(255, 255, 255, 0.10);
+  --ag-composer-card-focus-border: rgba(253, 183, 107, 0.42);
+  --link: #8EB2DC !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark, body[data-agy-theme].dark):not([data-has-browser-hole="true"]),
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is(.bg-background, .bg-content, .bg-shell, .bg-sidebar, [data-main-content-body], [data-side-panel-body]):not([data-has-browser-hole="true"]) {
+  background-color: #000000 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is(#antigravity\.agentSidePanelInputBox, [id="antigravity.agentSidePanelInputBox"], .surface-composer) {
+  background-color: #000000 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is(.surface-composer > .surface-composer-card, .surface-composer-card.bg-card, [id="antigravity.agentSidePanelInputBox"] .surface-composer-card) {
+  background-color: #0B0B0E !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is(.surface-composer:focus-within > .surface-composer-card, .surface-composer-card:focus-within, [id="antigravity.agentSidePanelInputBox"]:focus-within .surface-composer-card) {
+  border-color: rgba(253, 183, 107, 0.42) !important;
+}
+
+/* 2. 极客暗蓝用户气泡 */
+.agy-user-bubble {
+  background: #EDF4FF !important;
+  border: 1px solid rgba(59, 98, 140, 0.24) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.agy-user-bubble,
+.agy-user-bubble :is(p, span, div, .select-text):not(code):not(pre),
+[data-testid="user-message-content"],
+[data-testid="user-message-content"] :is(p, span, div, .select-text):not(code):not(pre) {
+  color: #1E4079 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .agy-user-bubble {
+  background: #0D1B2A !important;
+  border: 1px solid rgba(142, 178, 220, 0.30) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is(
+  .agy-user-bubble,
+  .agy-user-bubble :is(p, span, div, .select-text):not(code):not(pre),
+  [data-testid="user-message-content"],
+  [data-testid="user-message-content"] :is(p, span, div, .select-text):not(code):not(pre)
+) {
+  color: #B8D4F8 !important;
+  opacity: 1 !important;
+}
+
+/* 3. 对话与 Markdown 正文：15px、明亮高对比 #EDEDED */
+:is([data-markdown-root], [data-testid="user-message-content"], [data-testid="user-message-content"] .select-text, .agy-user-bubble, .prose, .markdown, [class*="chat-message"]),
+:is([data-markdown-root], .prose, .markdown) :is(p, li, blockquote, td, th) {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  -webkit-font-smoothing: auto !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown),
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) :is(p, li, td) {
+  color: #EDEDED !important;
+  opacity: 1 !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) :is(ul, ol) {
+  margin-top: 0.35em !important;
+  margin-bottom: 0.65em !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) li {
+  margin-top: 0.2em !important;
+  margin-bottom: 0.2em !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) li::marker {
+  color: #A0A0A8 !important;
+}
+
+/* 4. 标题与加粗：暖琥珀金 #FDB76B + 700 粗体 */
+:is([data-markdown-root], .prose, .markdown) h1 {
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+  margin-top: 1.2em !important;
+  margin-bottom: 0.45em !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) h2 {
+  font-size: 16.5px !important;
+  line-height: 1.45 !important;
+  margin-top: 1.15em !important;
+  margin-bottom: 0.45em !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) h3 {
+  font-size: 15.5px !important;
+  line-height: 1.45 !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.35em !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) h4 {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  margin-top: 0.9em !important;
+  margin-bottom: 0.3em !important;
+}
+
+:is([data-markdown-root], .prose, .markdown) :is(h1, h2, h3, h4, h5, h6, strong, b) {
+  color: #9A5B1F !important;
+  font-weight: 700 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"], html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) :is(h1, h2, h3, h4, h5, h6, strong, b) {
+  color: #FDB76B !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
+/* 5. 行内代码：去底框 + 冷钢蓝 #8EB2DC */
+:is([data-markdown-root], [data-testid="user-message-content"], .select-text, .prose, .markdown) :not(pre) > code {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 2px !important;
+  color: #3B628C !important;
+  font-weight: 500 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"], html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], [data-testid="user-message-content"], .select-text, .prose, .markdown) :not(pre) > code {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 2px !important;
+  color: #8EB2DC !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* 6. 代码块：2:1 严格对齐、全层禁止折行（含 .code-line / pre *）、关闭连字防错位 */
+pre:not(.ag-ascii-diagram),
+.code-block,
+.code-block > div:has(.code-line),
+.code-block > div:has(code) {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}
+
+pre,
+pre code,
+pre *,
+.code-block pre,
+.code-block code,
+.code-line,
+.code-line .line-content,
+.code-line .line-content * {
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  font-kerning: none !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+  line-height: 1.42 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) :is(pre, .code-block) {
+  background-color: #08080A !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+}
+
+/* 7. ASCII 架构图增强容器与分层着色 */
+.ag-ascii-src-hidden {
+  display: none !important;
+}
+
+.ag-ascii-diagram-wrap {
+  margin: 0.7em 0 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(59, 98, 140, 0.22) !important;
+  background-color: #FAFAFC !important;
+  overflow: hidden !important;
+}
+
+.ag-ascii-diagram-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 5px 12px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background-color: rgba(0, 0, 0, 0.025) !important;
+}
+
+.ag-ascii-diagram-badge {
+  font-family: 'Maple Mono NF CN', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+  color: #6B7280 !important;
+}
+
+.ag-ascii-diagram-toggle {
+  font-size: 11px !important;
+  padding: 1px 8px !important;
+  border-radius: 5px !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  background: transparent !important;
+  color: #4B5563 !important;
+  cursor: pointer !important;
+}
+
+.ag-ascii-diagram {
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-family: 'Maple Mono NF CN', monospace !important;
+  font-size: 12.5px !important;
+  line-height: 1.36 !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  font-kerning: none !important;
+  text-rendering: geometricPrecision !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+  -webkit-font-smoothing: auto !important;
+  color: #1F2937 !important;
+}
+
+.ag-ascii-diagram * {
+  font-family: 'Maple Mono NF CN', monospace !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  font-kerning: none !important;
+  text-rendering: geometricPrecision !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+}
+
+.ag-ascii-diagram .ag-ad-box { color: #9CA3AF !important; }
+.ag-ascii-diagram .ag-ad-arrow { color: #9A5B1F !important; }
+.ag-ascii-diagram .ag-ad-title { color: #9A5B1F !important; font-weight: 700 !important; }
+.ag-ascii-diagram .ag-ad-path { color: #3B628C !important; font-weight: 500 !important; }
+.ag-ascii-diagram .ag-ad-note { color: #6B7280 !important; }
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram-wrap {
+  background-color: #060608 !important;
+  border-color: rgba(142, 178, 220, 0.18) !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram-bar {
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+  background-color: rgba(255, 255, 255, 0.025) !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram-badge {
+  color: #7E8796 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram-toggle {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #A0A8B8 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram-toggle:hover {
+  border-color: rgba(253, 183, 107, 0.45) !important;
+  color: #FDB76B !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram {
+  color: #E4E4E7 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram .ag-ad-box { color: #525B6B !important; }
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram .ag-ad-arrow { color: #FDB76B !important; }
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram .ag-ad-title { color: #FDB76B !important; font-weight: 700 !important; }
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram .ag-ad-path { color: #8EB2DC !important; font-weight: 500 !important; }
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) .ag-ascii-diagram .ag-ad-note { color: #9A9AA6 !important; }
+
+/* 8. 引用块与表格细节 */
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) blockquote {
+  border-left: 2px solid rgba(253, 183, 107, 0.55) !important;
+  color: #BDBDC4 !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) th {
+  color: #FDB76B !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+:is(html[data-ag-theme-mode="dark"] body, body.dark, body.theme-dark) :is([data-markdown-root], .prose, .markdown) td {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+/* === AG-USER-MARKDOWN-BOLD-END === */

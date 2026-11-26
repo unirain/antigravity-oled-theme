@@ -1,0 +1,35 @@
+{
+  "enabled": true,
+  "channel": "auto",
+  "preset": "codex-pure-white",
+  "telemetryLayout": "compact",
+  "telemetryCacheMode": "session",
+  "quotaStyle": "rings",
+  "quotaOtherStyle": "rings",
+  "fonts": {
+    "mode": "split",
+    "global": "",
+    "ui": "",
+    "chat": "JetBrains Mono",
+    "code": "Maple Mono NF CN"
+  },
+  "contextLimit": "auto",
+  "modules": {
+    "theme": true,
+    "i18n": true,
+    "metrics": true,
+    "quota": true,
+    "quotaSidebar": true,
+    "sshRemote": false,
+    "promptSuggestions": true,
+    "deadlockHealer": true,
+    "zoomShortcuts": true,
+    "cdpAutoRelaunch": true,
+    "customCss": true,
+    "customJs": true
+  },
+  "sshHosts": [],
+  "themeVars": {
+    "--ag-chat-font-size": "15px"
+  }
+}
